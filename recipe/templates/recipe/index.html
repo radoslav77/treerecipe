@@ -1,0 +1,87 @@
+{% extends 'recipe/base.html' %}
+{% block style %}
+<style>
+    .card{
+       
+        width: 20%;
+        margin-left: 20%;
+        height: 200px;
+        width: 150px; 
+        background-color: #7bc421; 
+    }
+    .card.active{
+        height: auto;
+        width: auto;
+    }
+    img {
+        height: 100%;
+        width: 100%;
+    }
+    .containerbody{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+    }
+
+</style>
+{% endblock %}
+{% block body %}
+        {% for d in data %}
+        {% if d.image %}
+        <div class="card">
+           <img src="/media/images/silver_fox_roblox.jpg" alt="">
+       </div>
+        {% endif %} 
+        <div class="recipe" >
+            <h3>{{d.title}}</h3>
+             <br><br>
+             <ul>
+                {% for i in ing  %}
+                 <li>{{i}}</li>
+                {% endfor %}
+             </ul>
+             
+             <br><br>
+             {% if user.is_staff %}
+             <a href="{% url 'delete' d.title %}">Delete Recipe</a>
+             {% endif %}
+         </div>
+         {% if subrecipe %}
+         <div class="recipe" style="margin-top:10px;">
+            <h3>{{d.title}} Sub Recipe</h3>
+             <br><br>
+             <ul>
+                {% for j in subrecipe %}
+                <li><a href="{% url 'subrecipe' j.title %}">{{j.title}}</a></li>
+                {% endfor %}
+             </ul>
+         </div>
+         {% endif %}
+         {% if d.method %}
+         <div class="method">
+             <h3>Method</h3>
+             <p>{{d.method}}</p>
+             <br><br>
+             <p><a href="{% url 'index' %}">Return Back</a></p>
+         </div>
+         {% endif %}
+         {% endfor %}
+         <script>
+             const image = document.querySelector('.card')
+             image.addEventListener('click', () => {
+                
+                if (image.classList == 'card') {
+                        image.classList.add('active')
+                } else {
+                    image.classList.remove('active')
+                }
+
+                 
+             })
+             const recipe = document.getElementById('recipe')
+             
+                 recipe.classList.add('active')
+             
+         </script>
+{% endblock %}   

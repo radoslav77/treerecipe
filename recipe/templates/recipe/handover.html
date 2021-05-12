@@ -1,0 +1,58 @@
+{% extends 'recipe/base.html' %}
+
+
+{% block body %}
+       {% if user.is_authenticated %}
+        <div class="text">
+            <!--<h3>{{d.title}}</h3>-->
+            <form action="{% url 'handover' %}" method="POST" style="display: flex; flex-direction: column;">
+                {% csrf_token %}
+                <textarea name="msg" id="" cols="30" rows="10" ></textarea>
+                <input type="submit">
+            </form> 
+            <p ><a href="{% url 'index' %}" id="back">To Homepage</a></p>
+         </div>
+         {% endif %}
+        
+             {% for m in page_obj %}
+             <div class="card" id="card">
+                <h3>Message</h3>
+                <p>{{m.msg}}</p>
+                <br><br>
+                <p>{{m.date}}</p>
+                <p><strong>{% filter upper %} {{m.user}} {% endfilter %}</strong></p>
+                <br>
+                <p><a href="{% url 'index' %}">To Homepage</a></p>
+                {% if user.is_staff %}
+                <p><a href="{% url 'delete_post' m.id %}">Delete Post</a></p>
+                {% endif %}
+            </div>
+
+            
+            {% endfor %}
+
+            <div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1" style="font-size: 12px;">&laquo; first</a>
+                        <a href="?page={{ page_obj.previous_page_number }}" style="font-size: 12px;">previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}" style="font-size: 12px;">next</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}" style="font-size: 12px;">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+
+            <script>
+                
+                const lastMsg = document.getElementById('card')
+                lastMsg.classList.add('active')              
+           </script>
+         
+{% endblock %}   

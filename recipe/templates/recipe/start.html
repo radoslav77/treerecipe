@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+   {% load static %}
+   <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+
+   
+    <title>Recipe website</title> 
+    <style>
+        .hero h3 {
+            font-size: 40px;
+            margin: -20px 0 20px;
+            color: #999;
+            }
+            
+    </style>
+    {% block style %}
+    {% endblock %}
+</head>
+<body>
+    <nav class="nav">
+        <div class="navcon">
+            <h1 class="logo"><a href="{% url 'index' %}">Treehouse Pastry</a></h1>
+            <ul>
+                <li><a href="{% url 'breakfast' %}">Breakfast</a></li>
+                <li><a href="{% url 'nest' %}">The Nest</a></li>
+                <li><a href="{% url 'room_service' %}">Room Service</a></li>
+                <li><a href="{% url 'madara' %}">Madera</a></li>
+                <li><a href="{% url 'pizza' %}">Pizza mozzo</a></li>
+                <li><a href="{% url 'recipes' %}">Recipes</a></li>
+                <li><a href="{% url 'handover' %}">Handover</a></li>
+                {% if not user.is_authenticated %}
+                <li><a href="{% url 'login_user' %}">Login</a></li>
+                {% else  %}
+                <li><a href="{% url 'logout_user' %}">Logout</a></li>
+                {% endif %}
+                
+                {% if user.is_staff %}
+                <li><a href="{% url 'input' %}">Post Recipe</a></li>
+                <li><a href="{% url 'inputsub' %}">Post Sub Recipe</a></li>
+                {% endif %}
+
+                <li><a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                  </a></li>
+            </ul>
+        </div>
+    </nav> 
+    <div class="hero">
+        <div class="container">
+            <h1>Welcom to Treehouse Pastry Team</h1>
+            {% if not user.is_authenticated %}
+            <p>Recipes,Handovers and plenty of FUN</p>
+            {% else %}
+            <h3>Hello {% filter upper %} {{user}} {% endfilter %} </h3>
+            {% endif %}
+            {% if msg %}
+            <h1 style="color: red;">{{msg}}</h1>
+            {% endif %}
+        </div>
+    </div>
+ 
+     <div class="containerbody">
+
+        {% block body %}
+        {% endblock %}
+     </div>
+    
+   <script src="{% static 'js/script.js' %}"></script>
+   <script>
+
+function myFunction() {
+    var x = document.querySelector(".nav");
+    if (x.className === "nav") {
+      x.className += " responsive";
+    } else {
+      x.className = "nav";
+    }
+  }
+   </script>
+</body>
+</html>

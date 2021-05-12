@@ -1,0 +1,49 @@
+label {
+  margin-top: 10px;
+  color: #000;
+  display: flex;
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+input {
+  width: 70%;
+  border-radius: 5px;
+  height: 25px;
+  padding: 2px 2px;
+  font-size: 16px;
+  background-color: #fff;
+  margin-top: 20px;
+}
+input:focus {
+  outline: none;
+}
+
+.containerForm {
+  position: relative;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.card-body {
+  text-align: center;
+  outline: none;
+}
+.btn {
+  background-color: #2ca843;
+}
+
+span {
+  font-size: 12px;
+}
+
+.helptext ul li {
+  list-style-type: none;
+}
+
+@media screen and (max-width: 600px) {
+  span {
+    font-size: 8px;
+  }
+}

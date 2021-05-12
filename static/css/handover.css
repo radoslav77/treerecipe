@@ -1,0 +1,58 @@
+body {
+  background-color: #b5db9e;
+}
+.card {
+  background-color: rgb(178, 240, 240);
+  padding: 5px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+  margin: 15px;
+  width: 60%;
+  height: auto;
+  position: relative;
+  margin-left: 80px;
+  /*z-index: -1;*/
+}
+#card.active {
+  width: 80%;
+  height: auto;
+  background-color: azure;
+  margin-left: 0;
+}
+.text {
+  padding: 10px;
+  width: 80%;
+  height: 300px;
+  top: 10rem;
+  position: flex;
+  flex-direction: column;
+  left: -0.1rem;
+  border-radius: 15px;
+}
+
+.text input {
+  background-color: blue;
+  border-radius: 10px;
+  width: 100px;
+  color: #fff;
+  padding: 5px;
+}
+
+.text textarea {
+  padding-left: 10px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.text textarea:focus {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: #d50eeb;
+}
+#back {
+  color: #fff;
+}

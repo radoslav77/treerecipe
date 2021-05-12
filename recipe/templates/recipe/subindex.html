@@ -1,0 +1,26 @@
+{% extends 'recipe/base.html' %}
+
+{% block body %}
+        {% for d in data %} 
+        <div class="recipe">
+            <h3>{{d.title}}</h3>
+             
+             <ul>
+                {% for i in ing %}
+                 <li>{{i}}</li>
+                {% endfor %}
+             </ul>
+             {% if user.is_staff %}
+             <a href="{% url 'delete' d.title %}">Delete Recipe</a>
+             {% endif %}
+         </div>
+
+       
+         <div class="method">
+             <h3>Method</h3>
+             <p>{{d.method}}</p>
+             <p><a href="{% url 'index' %}">Return Back</a></p>
+         </div>
+         
+         {% endfor %}
+{% endblock %}   

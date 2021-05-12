@@ -1,0 +1,25 @@
+{% extends 'recipe/base.html' %}
+
+
+{% block body %}
+       
+        <div class="recipe">
+            <!--<h3>{{d.title}}</h3>-->
+             
+             <ul>
+                {% for i in out %}
+               
+                   <li><a href="{% url 'recipe' i.title %}">{{i}}</a></li>
+                 
+                {% endfor %}
+             </ul>
+         </div>
+
+
+         <div class="method">
+             <h3>Method</h3>
+             <p>{{d.method}}</p>
+             <p><a href="{% url 'index' %}">Return Back</a></p>
+         </div>
+         
+{% endblock %}   
