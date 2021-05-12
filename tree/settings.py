@@ -34,7 +34,7 @@ SECRET_KEY = os.environ.get(
 
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['www.tree-recipe.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
