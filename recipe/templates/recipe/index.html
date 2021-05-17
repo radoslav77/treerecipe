@@ -7,7 +7,8 @@
         margin-left: 20%;
         height: 200px;
         width: 150px; 
-        background-color: #7bc421; 
+        background-color: #7bc421;
+        
     }
     .card.active{
         height: auto;
@@ -30,7 +31,7 @@
         {% for d in data %}
         {% if d.image %}
         <div class="card">
-           <img src="/media/images/silver_fox_roblox.jpg" alt="">
+           <img src="{{d.image.url}}" alt="{{d.title}}">
        </div>
         {% endif %} 
         <div class="recipe" >
@@ -79,9 +80,7 @@
 
                  
              })
-             const recipe = document.getElementById('recipe')
-             
-                 recipe.classList.add('active')
+
              
          </script>
 {% endblock %}   
