@@ -10,7 +10,7 @@ body {
   font-family: 'Roboto', sans-serif;
   color: #222;
   padding-bottom: 50px;
-  background-color: #b5db9e;
+  background-color: #ffdd99;
 }
 
 .container {
@@ -114,7 +114,7 @@ body {
 }
 
 .hero {
-  background-image: url('https://www.luxuriousmagazine.com/wp-content/uploads/2020/09/Treeful-Treehouse-in-Okinawa-Japan.jpg');
+  background-image: url('https://cdn4.hotelopia.com/giata/bigger/00/007556/007556a_hb_a_124.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom center;
