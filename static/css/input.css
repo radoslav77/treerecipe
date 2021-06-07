@@ -25,3 +25,7 @@ textarea {
 textarea:focus {
   outline: none;
 }
+
+select {
+  width: 60%;
+}
