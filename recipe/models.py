@@ -5,9 +5,9 @@ from django.db import models
 
 class Recipe(models.Model):
     OUTLET = (
-        ('The Nest', 'The Nest'),
+        ('The Nest', 'Afternoon Tea'),
         ('Madara', 'Madara'),
-        ('Pizza Mozzo', 'Pizza Mozzo'),
+        ('Pizza Mozzo', 'Banqueting'),
         ('breakfast', 'Breakfast'),
         ('Room Service', 'Room Service'),
         ('Recipes', 'Recipes')

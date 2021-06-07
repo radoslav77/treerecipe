@@ -27,10 +27,12 @@
             <h1 class="logo"><a href="{% url 'index' %}">Treehouse Pastry</a></h1>
             <ul>
                 <li><a href="{% url 'breakfast' %}">Breakfast</a></li>
-                <li><a href="{% url 'nest' %}">The Nest</a></li>
+                <li><a href="{% url 'nest' %}">Afternoon Tea</a></li>
                 <li><a href="{% url 'room_service' %}">Room Service</a></li>
+                {% if user.is_staff %}
                 <li><a href="{% url 'madara' %}">Madera</a></li>
-                <li><a href="{% url 'pizza' %}">Pizza mozzo</a></li>
+                {% endfilter %}
+                <li><a href="{% url 'pizza' %}">Banqueting</a></li>
                 <li><a href="{% url 'recipes' %}">Recipes</a></li>
                 <li><a href="{% url 'handover' %}">Handover</a></li>
                 {% if not user.is_authenticated %}
