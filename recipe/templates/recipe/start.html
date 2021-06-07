@@ -31,7 +31,7 @@
                 <li><a href="{% url 'room_service' %}">Room Service</a></li>
                 {% if user.is_staff %}
                 <li><a href="{% url 'madara' %}">Madera</a></li>
-                {% endfilter %}
+                {% endif %}
                 <li><a href="{% url 'pizza' %}">Banqueting</a></li>
                 <li><a href="{% url 'recipes' %}">Recipes</a></li>
                 <li><a href="{% url 'handover' %}">Handover</a></li>
