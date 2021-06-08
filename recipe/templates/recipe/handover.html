@@ -5,7 +5,7 @@
        {% if user.is_authenticated %}
         <div class="text">
             <!--<h3>{{d.title}}</h3>-->
-            <form action="{% url 'handover' %}" method="POST" style="display: flex; flex-direction: column;">
+            <form action="{% url 'handover' %}" method="POST" style="display: flex; flex-direction: column; justify-content: center;">
                 {% csrf_token %}
                 <textarea name="msg" id="" cols="30" rows="10" ></textarea>
                 <input type="submit">
