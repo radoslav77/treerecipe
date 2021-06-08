@@ -20,6 +20,9 @@ body {
 
 .containerbody {
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .container button {
