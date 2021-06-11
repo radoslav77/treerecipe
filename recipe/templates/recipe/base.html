@@ -57,16 +57,20 @@
             {% else %}
             <h3>Hello {% filter upper %} {{user}} {% endfilter %} </h3>
             {% endif %}
-            {% if msg %}
-            <h1 style="color: red;">{{msg}}</h1>
-            {% endif %}
         </div>
     </div>
  
      <div class="containerbody">
-
+      {% if msg %}
+      <div class="method" id="msg">          
+          <h3 style="color: red; text-align: center;">{{msg}}</h3>
+          <br><br>
+          <p><a href="{% url 'index' %}">Return Back</a></p>
+      </div>
+      {% else %}
         {% block body %}
         {% endblock %}
+      {% endif %}  
      </div>
     
    <script src="{% static 'js/script.js' %}"></script>

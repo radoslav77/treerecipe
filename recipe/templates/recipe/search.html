@@ -1,0 +1,41 @@
+{% extends 'recipe/base.html' %}
+
+
+{% block body %}
+        {% if message %}
+        <div class="method" id="msg">          
+            <h3 style="color: red; text-align: center;">{{message}}</h3>
+            <br><br>
+            <p><a href="{% url 'index' %}">Return Back</a></p>
+        </div>
+        {% else %}
+        <div class="recipe">
+            <!--<h3>{{d.title}}</h3>-->
+             
+             <ul>
+                {% for i in out %}
+               
+                   <li><a href="{% url 'recipe' i.title %}">{{i}}</a></li>
+                 
+                {% endfor %}
+             </ul>
+             <ul>
+                 {% for j in out_sub %}
+                 <li><a href="{% url 'recipe' j.title %}">{{j.title}}</a></li>
+                 {% endfor %}
+             </ul>
+         </div>
+
+
+         <div class="method" id="method">
+             <h3>Method</h3>
+             <p>{{d.method}}</p>
+             <p><a href="{% url 'index' %}">Return Back</a></p>
+         </div>
+        
+        {% endif %}
+         
+{% endblock %}
+
+        
+   

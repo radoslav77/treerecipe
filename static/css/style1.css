@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+:root {
+  --primary-color: #ffeecc;
+  --secondary-color: #ffeecc;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -116,6 +121,25 @@ body {
   display: none;
 }
 
+.search {
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  border-radius: 50px;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  color: #7378c5;
+}
+
+.search::placeholder {
+  color: var(--primary-color);
+}
+
+.search:focus {
+  outline: none;
+  background-color: var(--primary-color);
+}
+
 .hero {
   background-image: url('https://cdn4.hotelopia.com/giata/bigger/00/007556/007556a_hb_a_124.jpg');
   background-repeat: no-repeat;
@@ -158,6 +182,11 @@ body {
   .nav ul li a {
     display: none;
   }
+
+  .nav ul li form input {
+    display: none;
+  }
+
   .nav ul li a.icon {
     float: right;
     display: block;
@@ -183,6 +212,12 @@ body {
     float: none;
     display: flex;
   }
+
+  .nav.responsive ul li form input {
+    float: none;
+    display: flex;
+  }
+
   .nav.responsive ul {
     display: flex;
     flex-direction: column;

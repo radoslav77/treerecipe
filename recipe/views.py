@@ -300,3 +300,25 @@ def logout_user(request):
         return redirect('login_user')
     else:
         return redirect('login_user')
+
+
+def search(request):
+    if request.method == 'GET':
+        search_term = request.GET['q']
+        result_recipe = Recipe.objects.filter(
+            title__icontains=search_term)
+        result_subrecipe = Sub_recipe.objects.filter(
+            title__icontains=search_term)
+
+        if not result_recipe or result_subrecipe:
+            msg = 'There is NOT resipies with this key word!'
+
+            return render(request, 'recipe/search.html', {
+                'message': msg
+
+            })
+
+        return render(request, 'recipe/search.html', {
+            'out': result_recipe,
+            'out_sub': result_subrecipe,
+        })

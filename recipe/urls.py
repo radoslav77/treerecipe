@@ -11,7 +11,7 @@ urlpatterns = [
     path('nest', views.nest, name='nest'),
     path('room', views.room_service, name='room_service'),
     path('recipe/<str:title>', views.recipe, name='recipe'),
-    path('subrecipe/<str:title>', views.subrecipe, name='subrecipe'),    
+    path('subrecipe/<str:title>', views.subrecipe, name='subrecipe'),
     path('handover', views.handover, name='handover'),
     path('delete/<str:title>', views.delete, name='delete'),
     path('register', views.register, name='register'),
@@ -19,5 +19,6 @@ urlpatterns = [
     path('logout', views.logout_user, name='logout_user'),
     path('deletePost/<int:id>', views.delete_post, name='delete_post'),
     path('inputsub', views.inputsub, name='inputsub'),
-    path('recipes', views.recipes, name='recipes')
+    path('recipes', views.recipes, name='recipes'),
+    path('search', views.search, name='search'),
 ]
