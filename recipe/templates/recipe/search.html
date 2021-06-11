@@ -24,14 +24,10 @@
                  <li><a href="{% url 'recipe' j.title %}">{{j.title}}</a></li>
                  {% endfor %}
              </ul>
-         </div>
-
-
-         <div class="method" id="method">
-             <h3>Method</h3>
-             <p>{{d.method}}</p>
+             <br><br>
              <p><a href="{% url 'index' %}">Return Back</a></p>
          </div>
+
         
         {% endif %}
          

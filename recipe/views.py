@@ -1,3 +1,4 @@
+from django.db import reset_queries
 from django.shortcuts import redirect, render
 from django.core.paginator import Paginator
 from django.contrib.auth import login, logout, authenticate
@@ -305,17 +306,24 @@ def logout_user(request):
 def search(request):
     if request.method == 'GET':
         search_term = request.GET['q']
-        result_recipe = Recipe.objects.filter(
-            title__icontains=search_term)
+        result_recipe = Recipe.objects.filter(title__startswith=search_term)
         result_subrecipe = Sub_recipe.objects.filter(
-            title__icontains=search_term)
+            title__startswith=search_term)
 
-        if not result_recipe or result_subrecipe:
+        print(result_recipe)
+        print(result_subrecipe)
+
+        if not result_recipe:
             msg = 'There is NOT resipies with this key word!'
 
             return render(request, 'recipe/search.html', {
                 'message': msg
+            })
+        if not result_recipe:
+            msg = 'There is NOT resipies with this key word!'
 
+            return render(request, 'recipe/search.html', {
+                'message': msg
             })
 
         return render(request, 'recipe/search.html', {
