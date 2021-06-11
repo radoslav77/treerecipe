@@ -18,8 +18,7 @@
                    <li><a href="{% url 'recipe' i.title %}">{{i}}</a></li>
                  
                 {% endfor %}
-             </ul>
-             <ul>
+
                  {% for j in out_sub %}
                  <li><a href="{% url 'recipe' j.title %}">{{j}}</a></li>
                  {% endfor %}
