@@ -211,10 +211,15 @@ def handover(request):
     if request.method == 'POST':
         msg = request.POST['msg']
         user = request.user
-
-        message = Handover(user=user, msg=msg)
-        message.save()
-        return redirect('index')
+        if not msg:
+            message = 'You need to type-in Your Message!'
+            return render(request, 'recipe/handover.html', {
+                'message': message,
+            })
+        else:
+            message = Handover(user=user, msg=msg)
+            message.save()
+            return redirect('index')
 
     msg = Handover.objects.all().order_by('-date')
     paginator = Paginator(msg, 7)  # Show 7 contacts per page.
@@ -304,29 +309,37 @@ def logout_user(request):
 
 
 def search(request):
-    if request.method == 'GET':
-        search_term = request.GET['q']
-        result_recipe = Recipe.objects.filter(title__startswith=search_term)
-        result_subrecipe = Sub_recipe.objects.filter(
-            title__startswith=search_term)
+    if request.user.is_authenticated:
 
-        print(result_recipe)
-        print(result_subrecipe)
+        if request.method == 'GET':
+            search_term = request.GET['q']
+            result_recipe = Recipe.objects.filter(
+                title__startswith=search_term)
+            result_subrecipe = Sub_recipe.objects.filter(
+                title__startswith=search_term)
 
-        if not result_recipe:
-            msg = 'There is NOT resipies with this key word!'
+            print(result_recipe)
+            print(result_subrecipe)
+
+            if not result_recipe:
+                msg = 'There is NOT resipies with this key word!'
+
+                return render(request, 'recipe/search.html', {
+                    'message': msg
+                })
+            if not result_recipe:
+                msg = 'There is NOT resipies with this key word!'
+
+                return render(request, 'recipe/search.html', {
+                    'message': msg
+                })
 
             return render(request, 'recipe/search.html', {
-                'message': msg
+                'out': result_recipe,
+                'out_sub': result_subrecipe,
             })
-        if not result_recipe:
-            msg = 'There is NOT resipies with this key word!'
-
-            return render(request, 'recipe/search.html', {
-                'message': msg
-            })
-
-        return render(request, 'recipe/search.html', {
-            'out': result_recipe,
-            'out_sub': result_subrecipe,
+    else:
+        msg = 'Please Log in to Gain accses!'
+        return render(request, 'recipe/base.html', {
+            'msg': msg
         })

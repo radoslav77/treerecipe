@@ -2,7 +2,7 @@ body {
   background-color: #ffeecc;
 }
 .card {
-  background-color: rgb(178, 240, 240);
+  background-color: rgb(248, 237, 201);
   padding: 5px;
   border: 1px solid #000;
   border-radius: 10px;
@@ -25,17 +25,23 @@ body {
   width: 80%;
   height: 300px;
   top: 10rem;
+  left: -0.1rem;
   position: flex;
   flex-direction: column;
-  left: -0.1rem;
+  justify-items: center;
   border-radius: 15px;
 }
 
-.text input {
-  background-color: blue;
+form {
+  align-items: center;
+  text-align: center;
+}
+
+input {
+  background-color: rgb(255, 208, 0);
   border-radius: 10px;
   width: 100px;
-  color: #fff;
+  color: rgb(240, 143, 16);
   padding: 5px;
 }
 
@@ -54,5 +60,13 @@ a {
   color: #d50eeb;
 }
 #back {
-  color: #fff;
+  color: rgb(240, 140, 10);
+}
+
+#worning {
+  color: red;
+  text-align: center;
+  letter-spacing: 1px;
+  font-size: bold;
+  font-size: 20px;
 }

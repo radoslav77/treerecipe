@@ -30,8 +30,12 @@ input:focus {
   text-align: center;
   outline: none;
 }
+
 .btn {
-  background-color: #2ca843;
+  background-color: #ffba53;
+  color: #000;
+  letter-spacing: 2px;
+  font-weight: bold;
 }
 
 span {
