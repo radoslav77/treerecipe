@@ -314,9 +314,9 @@ def search(request):
         if request.method == 'GET':
             search_term = request.GET['q']
             result_recipe = Recipe.objects.filter(
-                title__startswith=search_term)
+                title__icontains=search_term)
             result_subrecipe = Sub_recipe.objects.filter(
-                title__startswith=search_term)
+                title__icontains=search_term)
 
             print(result_recipe)
             print(result_subrecipe)
