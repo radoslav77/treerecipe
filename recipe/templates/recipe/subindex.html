@@ -1,20 +1,32 @@
 {% extends 'recipe/base.html' %}
 
+
+
 {% block body %}
         {% for d in data %} 
         <div class="recipe">
-            <h3>{{d.title}}</h3>
+            <h3 id="title">{{d.title}}</h3>
              
-             <ul>
+             <ul class="original">
                 {% for i in ing %}
                  <li>{{i}}</li>
                 {% endfor %}
              </ul>
              {% if user.is_staff %}
-             <a href="{% url 'delete' d.title %}">Delete Recipe</a>
+             <a href="{% url 'delete' d.title %}"  id="original">Delete Recipe</a>
              {% endif %}
          </div>
-
+         <br>
+         <h3>Multiply recipe by:</h3>
+         <div class="btns">
+             <button value="1" id="reload">x 1 </button>
+             <div class="times-x">
+             <button value="1.5"> x 1 ½ </button>
+             <button value="2" > x 2 </button>
+             <button value="3">x 3 </button>
+             <button value="4">x 4 </button>
+            </div>
+         </div>
        
          <div class="method">
              <h3>Method</h3>
@@ -23,4 +35,5 @@
          </div>
          
          {% endfor %}
+
 {% endblock %}   

@@ -1,32 +1,5 @@
 {% extends 'recipe/base.html' %}
-{% block style %}
-<style>
-    .card{
-       
-        width: 50%;
-        margin: 20px;
-        height: 200px;
-        width: 150px; 
-        background-color: #d5e5c0;
-        
-    }
-    .card.active{
-        height: auto;
-        width: auto;
-    }
-    img {
-        height: 100%;
-        width: 100%;
-    }
-    .containerbody{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
 
-    }
-
-</style>
-{% endblock %}
 {% block body %}
 
         {% for d in data %}
@@ -36,17 +9,16 @@
        </div>
         {% endif %} 
         <div class="recipe" >
-            <h3>{{d.title}}</h3>
+            <h3 id="title">{{d.title}}</h3>
              <br><br>
-             <ul>
+             <ul class="original">
                 {% for i in ing  %}
                  <li>{{i}}</li>
                 {% endfor %}
              </ul>
-             
              <br><br>
              {% if user.is_staff %}
-             <a href="{% url 'delete' d.title %}">Delete Recipe</a>
+             <a href="{% url 'delete' d.title %}" id="original">Delete Recipe</a>
              {% endif %}
          </div>
          {% if subrecipe %}
@@ -60,6 +32,18 @@
              </ul>
          </div>
          {% endif %}
+         <br>
+         <h3>Multiply recipe by:</h3>
+         <div class="btns">
+             <button value="1" id="reload">x 1 </button>
+             <div class="times-x">
+             <button value="1.5"> x 1 ½ </button>
+             <button value="2" > x 2 </button>
+             <button value="3">x 3 </button>
+             <button value="4">x 4 </button>
+            </div>
+         </div>
+
          {% if d.method %}
          <div class="method">
              <h3>Method</h3>
@@ -67,21 +51,8 @@
              <br><br>
              <p><a href="{% url 'index' %}">Return Back</a></p>
          </div>
+
          {% endif %}
          {% endfor %}
-         <script>
-             const image = document.querySelector('.card')
-             image.addEventListener('click', () => {
-                
-                if (image.classList == 'card') {
-                        image.classList.add('active')
-                } else {
-                    image.classList.remove('active')
-                }
 
-                 
-             })
-
-             
-         </script>
 {% endblock %}   
