@@ -27,7 +27,7 @@
              <br><br>
              <ul>
                 {% for j in subrecipe %}
-                <li><a href="{% url 'subrecipe' j.title %}">{{j.title}}</a></li>
+                <li><a href="{% url 'subrecipe' d.id j.title  %}">{{j.title}}</a></li>
                 {% endfor %}
              </ul>
          </div>
