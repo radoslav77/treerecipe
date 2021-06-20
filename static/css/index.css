@@ -1,14 +1,15 @@
 .card {
-  width: 40%;
+  width: 28%;
   margin: 20px;
   height: 200px;
   background-color: transparent;
+  object-fit: cover;
 }
 .card.active {
   height: auto;
   width: auto;
 }
-img {
+.card img {
   height: 100%;
   width: 100%;
 }
@@ -49,4 +50,10 @@ button {
   font-size: 17px;
   overflow: none;
   font-weight: bold;
+}
+
+@media screen and (max-width: 800px) {
+  .card {
+    width: 50%;
+  }
 }

@@ -10,7 +10,7 @@ body {
   font-family: 'Roboto', sans-serif;
   color: #222;
   padding-bottom: 50px;
-  background-color: #fff8e9;
+  background-color: #fcfaf7;
 }
 
 .container {
@@ -37,7 +37,7 @@ body {
 
   width: 350px;
   height: auto;
-  background-color: aliceblue;
+  background-color: rgb(249, 252, 255);
   padding: 20px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
   display: flex;
