@@ -16,17 +16,18 @@
                 {% for i in out %}
                
                    <li><a href="{% url 'recipe' i.title %}">{{i}}</a></li>
-                 
+                
                 
 
                  {% for j in out_sub %}
                  <li><a href="{% url 'subrecipe' i.id j.title %}">{{j}}</a></li>
                  {% endfor %}
+                 {% endfor %}
              </ul>
              <br><br>
              <p><a href="{% url 'index' %}">Return Back</a></p>
          </div>
-            {% endfor %}
+            
         
         {% endif %}
          
