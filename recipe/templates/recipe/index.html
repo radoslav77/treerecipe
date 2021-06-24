@@ -152,14 +152,50 @@ button {
          </div>
          
          <div class="contain">
-          <h2>Contains:</h2>
+            <h2>Contains:</h2>
             <div class="allergy"> 
-                <p id="info"></p>
+                  <p id="info"></p>
             </div>
             <div class="soya">
+                  <p></p>
+            </div>
+            <div class="peanuts">
                 <p></p>
             </div>
-          </div>
+            <div class="glutens">
+                <p></p>
+            </div>
+            <div class="dairies">
+                <p></p>
+            </div>
+            <div class="nuts">
+                <p></p>
+            </div>
+            <div class="celery">
+                <p></p>
+            </div>
+            <div class="crustaceans">
+                <p></p>
+            </div>
+            <div class="fish">
+                <p></p>
+            </div>
+            <div class="lupin">
+                <p></p>
+            </div>
+            <div class="molluscs">
+                <p></p>
+            </div>
+            <div class="mustard">
+                <p></p>
+            </div>
+            <div class="sesame">
+                <p></p>
+            </div>
+            <div class="sulphites">
+                <p></p>
+            </div>
+        </div>
 
          {% if d.method %}
          <div class="method">
@@ -304,38 +340,36 @@ function ContainAllergents() {
 
         peanuts.forEach(all => {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
-            if (found == all || found == all.toLowerCase()){
-                                
+            if (found == all || found == all.toLowerCase()){                  
+
+                const PeanutData = document.querySelector('.peanuts')             
                 const pEl = document.createElement('p')
                 pEl.innerText = 'Peanuts,'
-                Cont.appendChild(pEl)
+                PeanutData.replaceWith(pEl)
+              
             }
         })
 
         eggs.forEach(all => {
-            const found = num.find(element => element.toLowerCase() == all.toLowerCase())
-            
-            
-            if ( found === all || found === all.toLowerCase()){
-                                 
+            const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
+            if ( found == all || found == all.toLowerCase()){
+                            
+                const pEl = document.createElement('p')
+                pEl.innerText = 'Eggs,'
+                viewData.replaceWith(pEl)
+                //console.log(found)
                 
-                    const pEl = document.createElement('p')
-                    pEl.innerText = 'Eggs,'
-                    viewData.replaceWith(pEl)
-                    
-                
+
             }
-            
-            
         })
 
         glutens.forEach(all => {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
             if ( found == all || found == all.toLowerCase()){
-                
+                const GlutenData = document.querySelector('.glutens')
                 const pEl = document.createElement('p')
                 pEl.innerText = 'Gluten,'
-                Cont.appendChild(pEl)
+                GlutenData.replaceWith(pEl)
                 
             }
         })
@@ -343,10 +377,10 @@ function ContainAllergents() {
         dairies.forEach(all => {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
             if ( found == all || found == all.toLowerCase()){
-                
+                const DairyData = document.querySelector('.dairies')
                 const pEl = document.createElement('p')
                 pEl.innerText = 'Dairy,'
-                Cont.appendChild(pEl)
+                DairyData.replaceWith(pEl)
                 
             }
         })
@@ -354,10 +388,10 @@ function ContainAllergents() {
         nuts.forEach(all => {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
             if ( found == all || found == all.toLowerCase()){
-                
+                const NutsData = document.querySelector('.nuts')
                 const pEl = document.createElement('p')
                 pEl.innerText = 'Nuts,'
-                Cont.appendChild(pEl)
+               NutsData.replaceWith(pEl)
                 
             }
         })
@@ -365,10 +399,10 @@ function ContainAllergents() {
         celery.forEach(all => {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
             if ( found == all || found == all.toLowerCase()){
-                
+                const CeleryData = document.querySelector('.celery')
                 const pEl = document.createElement('p')
                 pEl.innerText = 'Celery,'
-                Cont.appendChild(pEl)
+                CeleryData.replaceWith(pEl)
                 
             }
         })
@@ -376,10 +410,10 @@ function ContainAllergents() {
         crustaceans.forEach(all => {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
             if ( found == all || found == all.toLowerCase()){
-                
+                const CrustaceansData = document.querySelector('.crustaceans')
                 const pEl = document.createElement('p')
                 pEl.innerText = 'Crustaceans,'
-                Cont.appendChild(pEl)
+                CrustaceansData.replaceWith(pEl)
                 
             }
         })
@@ -387,10 +421,10 @@ function ContainAllergents() {
         fish.forEach(all => {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
             if ( found == all || found == all.toLowerCase()){
-                
+                const FishData = document.querySelector('.fish')
                 const pEl = document.createElement('p')
                 pEl.innerText = 'Fish,'
-                Cont.appendChild(pEl)
+                FishData.replaceWith(pEl)
                 
             }
         })
@@ -398,10 +432,10 @@ function ContainAllergents() {
         lupin.forEach(all => {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
             if ( found == all || found == all.toLowerCase()){
-                
+                const LupinData = document.querySelector('.lupin')
                 const pEl = document.createElement('p')
                 pEl.innerText = 'Lupin,'
-                Cont.appendChild(pEl)
+                LupinData.replaceWith(pEl)
                 
             }
         })
@@ -409,10 +443,10 @@ function ContainAllergents() {
         molluscs.forEach(all => {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
             if ( found == all || found == all.toLowerCase()){
-                
+                const MolluscsData = document.querySelector('.molluscs')
                 const pEl = document.createElement('p')
                 pEl.innerText = 'Molluscs,'
-                Cont.appendChild(pEl)
+                MolluscsData.replaceWith(pEl)
                 
             }
         })
@@ -420,10 +454,10 @@ function ContainAllergents() {
         mustard.forEach(all => {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
             if ( found == all || found == all.toLowerCase()){
-                
+                const MustardData = document.querySelector('.mustard')
                 const pEl = document.createElement('p')
                 pEl.innerText = 'Mustard,'
-                Cont.appendChild(pEl)
+                MustardData.replaceWith(pEl)
                 
             }
         })
@@ -431,23 +465,22 @@ function ContainAllergents() {
         sesame.forEach(all => {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
             if ( found == all || found == all.toLowerCase()){
-                
+                const SesameData = document.querySelector('.sesame')
                 const pEl = document.createElement('p')
                 pEl.innerText = 'Sesame,'
-                Cont.appendChild(pEl)
+                SesameData.replaceWith(pEl)
                 
             }
         })
 
         soya.forEach(all => {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())               
-
             if ( found == all || found == all.toLowerCase()){
+                
                 const soyaData = document.querySelector('.soya')
                 const pEl = document.createElement('p')
                 pEl.innerHTML = 'Soya,'
                 soyaData.replaceWith(pEl)
-              
                 
             }
         })
@@ -455,17 +488,16 @@ function ContainAllergents() {
         sulphites.forEach(all => {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
             if ( found == all || found == all.toLowerCase()){
-                
+                const SulphitesData = document.querySelector('.sulphites')
                 const pEl = document.createElement('p')
                 pEl.innerText = 'Sulphites,'
-                Cont.appendChild(pEl)
+                SulphitesData.replaceWith(pEl)
                 
             }
         })
 
     })
 }
-
 
 
 
