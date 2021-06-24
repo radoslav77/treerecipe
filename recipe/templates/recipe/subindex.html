@@ -120,6 +120,9 @@
               <div class="allergy"> 
                   <p id="info"></p>
               </div>
+              <div class="soya">
+                  <p></p>
+              </div>
             </div>
 
          <div class="method">
@@ -382,9 +385,10 @@ function ContainAllergents() {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())               
             if ( found == all || found == all.toLowerCase()){
                 
+                const soyaData = document.querySelector('.soya')
                 const pEl = document.createElement('p')
-                pEl.innerText = 'Soya,'
-                Cont.appendChild(pEl)
+                pEl.innerHTML = 'Soya,'
+                soyaData.replaceWith(pEl)
                 
             }
         })
