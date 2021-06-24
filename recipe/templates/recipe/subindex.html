@@ -67,6 +67,24 @@
 .contain h2 {
   letter-spacing: 1px;
 }
+@media screen and (max-width: 800px) {
+
+  .contain{
+      width: 60%;
+      margin: 0;
+      overflow: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: auto;
+      line-height: 6px;
+
+  }
+  .contain p {
+      text-align: center;
+  }
+}
+
 
 </style>
 {% endblock %}
@@ -178,6 +196,7 @@ const res = document.querySelector('.recipe')
 const Cont  = document.querySelector('.contain')
 
 
+
 const allergents = {
     dairy : ['Milk','Butter', 'Cream','Yogurt','Cheese'],
     gluten : ['Flour', 'Oats', 'Barley'],
@@ -203,6 +222,7 @@ const allergents = {
 ContainAllergents()
 
 
+
 function ContainAllergents() {
     i.forEach(e => {
         var num = e.split(/\s+/)
@@ -223,22 +243,26 @@ function ContainAllergents() {
 
         peanuts.forEach(all => {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
-            if (found == all || found == all.toLowerCase()){
-                                
+            if (found == all || found == all.toLowerCase()){                  
+
+                             
                 const pEl = document.createElement('p')
                 pEl.innerText = 'Peanuts,'
                 Cont.appendChild(pEl)
+              
             }
         })
 
         eggs.forEach(all => {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
             if ( found == all || found == all.toLowerCase()){
-                
+                            
                 const pEl = document.createElement('p')
                 pEl.innerText = 'Eggs,'
                 Cont.appendChild(pEl)
+                console.log(found)
                 
+
             }
         })
 
