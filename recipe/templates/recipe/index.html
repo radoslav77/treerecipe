@@ -152,8 +152,13 @@ button {
          </div>
          
          <div class="contain">
-          <h2>Contains:<h2></h2> 
-          <p id="info"></p>
+          <h2>Contains:</h2>
+            <div class="allergy"> 
+                <p id="info"></p>
+            </div>
+            <div class="soya">
+                <p></p>
+            </div>
           </div>
 
          {% if d.method %}
@@ -248,6 +253,10 @@ btns.forEach((btn) => {
 
 const res = document.querySelector('.recipe')
 const Cont  = document.querySelector('.contain')
+const viewData = document.querySelector('.allergy')
+const View = Cont.innerText.split('\n')
+
+console.log(Cont)
 
 
 const allergents = {
@@ -265,7 +274,7 @@ const allergents = {
     mustard : ['Mustard', 'Mustards'],
     sesame : ['Sesame', 'Sesames'],
     soy : ['Soybean','Soybeans','Soyabean','Soyabeans','Soy','Soya','Chocolate','Chocolates'],
-    sulphites : ['Cheese','Glucose','Glaze','Gel']
+    sulphites : ['Cheese','Glucose','Glaze','Gel','Wine','Rum','Vodka','Gin']
 
 
 }
@@ -304,14 +313,20 @@ function ContainAllergents() {
         })
 
         eggs.forEach(all => {
-            const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
-            if ( found == all || found == all.toLowerCase()){
+            const found = num.find(element => element.toLowerCase() == all.toLowerCase())
+            
+            
+            if ( found === all || found === all.toLowerCase()){
+                                 
                 
-                const pEl = document.createElement('p')
-                pEl.innerText = 'Eggs,'
-                Cont.appendChild(pEl)
+                    const pEl = document.createElement('p')
+                    pEl.innerText = 'Eggs,'
+                    viewData.replaceWith(pEl)
+                    
                 
             }
+            
+            
         })
 
         glutens.forEach(all => {
@@ -426,11 +441,13 @@ function ContainAllergents() {
 
         soya.forEach(all => {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())               
+
             if ( found == all || found == all.toLowerCase()){
-                
+                const soyaData = document.querySelector('.soya')
                 const pEl = document.createElement('p')
-                pEl.innerText = 'Soya,'
-                Cont.appendChild(pEl)
+                pEl.innerHTML = 'Soya,'
+                soyaData.replaceWith(pEl)
+              
                 
             }
         })

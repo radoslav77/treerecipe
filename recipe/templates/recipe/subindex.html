@@ -116,9 +116,11 @@
          </div>
          
          <div class="contain">
-          <h2>Contains:<h2></h2> 
-          <p id="info"></p>
-          </div>
+            <h2>Contains:</h2>
+              <div class="allergy"> 
+                  <p id="info"></p>
+              </div>
+            </div>
 
          <div class="method">
              <h3>Method</h3>
@@ -194,7 +196,7 @@ btns.forEach((btn) => {
 
 const res = document.querySelector('.recipe')
 const Cont  = document.querySelector('.contain')
-
+const viewData = document.querySelector('.allergy')
 
 
 const allergents = {
@@ -212,7 +214,7 @@ const allergents = {
     mustard : ['Mustard', 'Mustards'],
     sesame : ['Sesame', 'Sesames'],
     soy : ['Soybean','Soybeans','Soyabean','Soyabeans','Soy','Soya','Chocolate','Chocolates'],
-    sulphites : ['Cheese','Glucose','Glaze','Gel']
+    sulphites : ['Cheese','Glucose','Glaze','Gel','Wine','Rum','Vodka','Gin']
 
 
 }
@@ -259,8 +261,8 @@ function ContainAllergents() {
                             
                 const pEl = document.createElement('p')
                 pEl.innerText = 'Eggs,'
-                Cont.appendChild(pEl)
-                console.log(found)
+                viewData.replaceWith(pEl)
+                //console.log(found)
                 
 
             }
