@@ -43,29 +43,29 @@
     overflow: none;
     font-weight: bold;
   }
-  .contain {
+ .contain {
   background-color: #fff;
   margin-top: 2rem;
-  width: 800px;
+  width: auto;
   height: 100px;
   display: flex;
   padding: 10px;
   border-radius: 5px;
   border-color: #000 solid 1px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  overflow: none;
 }
 
-.contain p {
-  font-weight: bold;
-  letter-spacing: 1px;
-  margin-top: 25px;
-  margin-left: 10px;
-  color: red;
-  margin-top: 20px;
+.contain div {
+    margin: 5px;
+    color: red;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 25px;
 }
-
 .contain h2 {
   letter-spacing: 1px;
+  margin-top: 20px;
 }
 @media screen and (max-width: 800px) {
 
@@ -78,11 +78,9 @@
       justify-content: center;
       height: auto;
       line-height: 6px;
+  }
 
-  }
-  .contain p {
-      text-align: center;
-  }
+
 }
 
 
@@ -117,48 +115,20 @@
          
         <div class="contain">
             <h2>Contains:</h2>
-            <div class="allergy"> 
-                  <p id="info"></p>
-            </div>
-            <div class="soya">
-                  <p></p>
-            </div>
-            <div class="peanuts">
-                <p></p>
-            </div>
-            <div class="glutens">
-                <p></p>
-            </div>
-            <div class="dairies">
-                <p></p>
-            </div>
-            <div class="nuts">
-                <p></p>
-            </div>
-            <div class="celery">
-                <p></p>
-            </div>
-            <div class="crustaceans">
-                <p></p>
-            </div>
-            <div class="fish">
-                <p></p>
-            </div>
-            <div class="lupin">
-                <p></p>
-            </div>
-            <div class="molluscs">
-                <p></p>
-            </div>
-            <div class="mustard">
-                <p></p>
-            </div>
-            <div class="sesame">
-                <p></p>
-            </div>
-            <div class="sulphites">
-                <p></p>
-            </div>
+            <div class="allergy" hidden></div>
+            <div class="soya" hidden></div>
+            <div class="peanuts" hidden></div>
+            <div class="glutens" hidden></div>
+            <div class="dairies" hidden></div>
+            <div class="nuts" hidden></div>
+            <div class="celery" hidden></div>
+            <div class="crustaceans" hidden></div>
+            <div class="fish" hidden></div>
+            <div class="lupin" hidden></div>
+            <div class="molluscs" hidden></div>
+            <div class="mustard" hidden></div>
+            <div class="sesame" hidden></div>
+            <div class="sulphites" hidden></div>
         </div>
 
          <div class="method">
@@ -236,14 +206,16 @@ btns.forEach((btn) => {
 const res = document.querySelector('.recipe')
 const Cont  = document.querySelector('.contain')
 const viewData = document.querySelector('.allergy')
+const View = Cont.innerText.split('\n')
+
 
 
 const allergents = {
     dairy : ['Milk','Butter', 'Cream','Yogurt','Cheese'],
-    gluten : ['Flour', 'Oats', 'Barley'],
+    gluten : ['Flour', 'Oats', 'Barley','Waffle'],
     nuts : ['Almonds','Almond','Walnuts','Walnut', 'Pecans','Pecan','Cashews','Cashew','Pistachios','Pistachio','Hazelnuts','Hazelnut',
             'Brazil','Brazils','Macadamia','Macadamias','Chestnut','Chestnuts','Filbert','Filberts','Hickory','Hickories','Pinenuts','Pinenut','Pine','Coconut','Coconuts'],
-    eggs : ['Egg','Eggs', 'Yolks', 'Yolk', 'Whites', 'White'],
+    eggs : ['Egg','Eggs', 'Yolks', 'Yolk', 'Whites', /*'White'*/],
     peanut: ['Peanut', 'Peanuts','Peanutbutter'],
     celery: ['Celery'],
     crustaceans : ['Prawns','Prawn','Crabs','Crab', 'Lobster','Lobsters'],
@@ -252,7 +224,7 @@ const allergents = {
     molluscs : ['Mussels','Mussel','Oysters','Oyster'],
     mustard : ['Mustard', 'Mustards'],
     sesame : ['Sesame', 'Sesames'],
-    soy : ['Soybean','Soybeans','Soyabean','Soyabeans','Soy','Soya','Chocolate','Chocolates'],
+    soy : ['Soybean','Soybeans','Soyabean','Soyabeans','Soy','Soya','Chocolate','Chocolates','White chocolate'],
     sulphites : ['Cheese','Glucose','Glaze','Gel','Wine','Rum','Vodka','Gin']
 
 
@@ -261,7 +233,6 @@ const allergents = {
 
 
 ContainAllergents()
-
 
 
 function ContainAllergents() {
@@ -285,35 +256,30 @@ function ContainAllergents() {
         peanuts.forEach(all => {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
             if (found == all || found == all.toLowerCase()){                  
-
                 const PeanutData = document.querySelector('.peanuts')             
-                const pEl = document.createElement('p')
-                pEl.innerText = 'Peanuts,'
-                PeanutData.replaceWith(pEl)
+                PeanutData.hidden = false
+                PeanutData.innerText = 'Peanuts,'
               
             }
         })
 
-        eggs.forEach(all => {
+        eggs.forEach((all, idx) => {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
-            if ( found == all || found == all.toLowerCase()){
-                            
-                const pEl = document.createElement('p')
-                pEl.innerText = 'Eggs,'
-                viewData.replaceWith(pEl)
+            if ( found == all || found == all.toLowerCase()){                
+                viewData.hidden = false
+                viewData.innerHTML = 'Eggs,'
                 //console.log(found)
-                
+            }  
 
-            }
+            
         })
 
         glutens.forEach(all => {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
             if ( found == all || found == all.toLowerCase()){
                 const GlutenData = document.querySelector('.glutens')
-                const pEl = document.createElement('p')
-                pEl.innerText = 'Gluten,'
-                GlutenData.replaceWith(pEl)
+                GlutenData.hidden = false
+                GlutenData.innerText = 'Gluten,'
                 
             }
         })
@@ -322,9 +288,8 @@ function ContainAllergents() {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
             if ( found == all || found == all.toLowerCase()){
                 const DairyData = document.querySelector('.dairies')
-                const pEl = document.createElement('p')
-                pEl.innerText = 'Dairy,'
-                DairyData.replaceWith(pEl)
+                DairyData.hidden = false
+                DairyData.innerText = 'Dairy,'
                 
             }
         })
@@ -333,9 +298,8 @@ function ContainAllergents() {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
             if ( found == all || found == all.toLowerCase()){
                 const NutsData = document.querySelector('.nuts')
-                const pEl = document.createElement('p')
-                pEl.innerText = 'Nuts,'
-               NutsData.replaceWith(pEl)
+                NutsData.hidden = false
+                NutsData.innerText = 'Nuts,'
                 
             }
         })
@@ -344,9 +308,8 @@ function ContainAllergents() {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
             if ( found == all || found == all.toLowerCase()){
                 const CeleryData = document.querySelector('.celery')
-                const pEl = document.createElement('p')
-                pEl.innerText = 'Celery,'
-                CeleryData.replaceWith(pEl)
+                CeleryData.hidden = false
+                CeleryData.innerText = 'Celery,'
                 
             }
         })
@@ -355,9 +318,8 @@ function ContainAllergents() {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
             if ( found == all || found == all.toLowerCase()){
                 const CrustaceansData = document.querySelector('.crustaceans')
-                const pEl = document.createElement('p')
-                pEl.innerText = 'Crustaceans,'
-                CrustaceansData.replaceWith(pEl)
+                CrustaceansData.hidden = false
+                CrustaceansData.innerText = 'Crustaceans,'
                 
             }
         })
@@ -366,9 +328,8 @@ function ContainAllergents() {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
             if ( found == all || found == all.toLowerCase()){
                 const FishData = document.querySelector('.fish')
-                const pEl = document.createElement('p')
-                pEl.innerText = 'Fish,'
-                FishData.replaceWith(pEl)
+                FishData.hidden = false
+                FishData.innerText = 'Fish,'
                 
             }
         })
@@ -377,9 +338,8 @@ function ContainAllergents() {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
             if ( found == all || found == all.toLowerCase()){
                 const LupinData = document.querySelector('.lupin')
-                const pEl = document.createElement('p')
-                pEl.innerText = 'Lupin,'
-                LupinData.replaceWith(pEl)
+                LupinData.hidden = false
+                LupinData.innerText = 'Lupin,'
                 
             }
         })
@@ -388,9 +348,8 @@ function ContainAllergents() {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
             if ( found == all || found == all.toLowerCase()){
                 const MolluscsData = document.querySelector('.molluscs')
-                const pEl = document.createElement('p')
-                pEl.innerText = 'Molluscs,'
-                MolluscsData.replaceWith(pEl)
+                MolluscsData.hidden = false
+                MolluscsData.innerText = 'Molluscs,'
                 
             }
         })
@@ -399,9 +358,8 @@ function ContainAllergents() {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
             if ( found == all || found == all.toLowerCase()){
                 const MustardData = document.querySelector('.mustard')
-                const pEl = document.createElement('p')
-                pEl.innerText = 'Mustard,'
-                MustardData.replaceWith(pEl)
+                MustardData.hidden = false
+                MustardData.innerText = 'Mustard,'
                 
             }
         })
@@ -410,21 +368,18 @@ function ContainAllergents() {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
             if ( found == all || found == all.toLowerCase()){
                 const SesameData = document.querySelector('.sesame')
-                const pEl = document.createElement('p')
-                pEl.innerText = 'Sesame,'
-                SesameData.replaceWith(pEl)
+                SesameData.hidden = false
+                SesameData.innerText = 'Sesame,'
                 
             }
         })
 
         soya.forEach(all => {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())               
-            if ( found == all || found == all.toLowerCase()){
-                
+            if ( found == all || found == all.toLowerCase()){        
                 const soyaData = document.querySelector('.soya')
-                const pEl = document.createElement('p')
-                pEl.innerHTML = 'Soya,'
-                soyaData.replaceWith(pEl)
+                soyaData.hidden = false
+                soyaData.innerHTML = 'Soya,'
                 
             }
         })
@@ -433,9 +388,8 @@ function ContainAllergents() {
             const found = num.find(element => element.toLowerCase() == all.toLowerCase())   
             if ( found == all || found == all.toLowerCase()){
                 const SulphitesData = document.querySelector('.sulphites')
-                const pEl = document.createElement('p')
-                pEl.innerText = 'Sulphites,'
-                SulphitesData.replaceWith(pEl)
+                SulphitesData.hidden = false
+                SulphitesData.innerText = 'Sulphites,'
                 
             }
         })
