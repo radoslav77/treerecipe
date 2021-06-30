@@ -8,7 +8,6 @@ import datetime
 from django.urls import reverse
 
 
-
 from .forms import *
 
 from .models import *
@@ -132,7 +131,7 @@ def recipe(request, title):
 
     sub_data = Sub_recipe.objects.filter(sub_title=data[0])
     title = []
-    
+
     for t in sub_data:
         title.append(t)
 
@@ -145,9 +144,9 @@ def recipe(request, title):
 
 
 def subrecipe(request, title, id):
-    data = Sub_recipe.objects.filter(title=title, sub_title=id)
-    #subdata=[data]
-    
+    data = Sub_recipe.objects.filter(title=title)
+    # subdata=[data]
+
     '''
     if len(data) > 1:
         for d in data:
@@ -165,10 +164,8 @@ def subrecipe(request, title, id):
             i = j[0][0]
             ingr.append(i[0:-1])
 
-  
-
     return render(request, 'recipe/subindex.html', {
-        
+
         'data': data,
         'ing': ingr,
 
@@ -211,7 +208,6 @@ def input(request):
 def inputsub(request):
     if request.method == 'POST':
         form = SubRecipeForm(request.POST)
-       
 
         if form.is_valid:
             data = form.save(commit=False)
