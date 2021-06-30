@@ -2,86 +2,7 @@
 
 {% block style %}
 <style>
-.containerbody {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .multy {
-    display: none;
-  }
-  
-  .btns {
-    display: flex;
-    flex-direction: row;
-    justify-items: center;
-    width: 400px;
-    margin: 10px;
-  }
-  .btns #reload {
-    margin-left: 3rem;
-    display: none;
-  }
-  .btns .times-x {
-    width: 80%;
-    margin-left: 2rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
-  
-  button {
-    width: 50px;
-    height: 30px;
-    background-color: bisque;
-    color: #000;
-    border-radius: 5px;
-    border: 1px solid #fab62d;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
-    margin: 5px;
-    font-size: 17px;
-    overflow: none;
-    font-weight: bold;
-  }
- .contain {
-  background-color: #fff;
-  margin-top: 2rem;
-  width: auto;
-  height: 100px;
-  display: flex;
-  padding: 10px;
-  border-radius: 5px;
-  border-color: #000 solid 1px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  overflow: none;
-}
 
-.contain div {
-    margin: 5px;
-    color: red;
-    text-align: center;
-    font-weight: bold;
-    margin-top: 25px;
-}
-.contain h2 {
-  letter-spacing: 1px;
-  margin-top: 20px;
-}
-@media screen and (max-width: 800px) {
-
-  .contain{
-      width: 60%;
-      margin: 0;
-      overflow: none;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      height: auto;
-      line-height: 6px;
-  }
-
-
-}
 
 
 </style>
@@ -140,7 +61,9 @@
          {% endfor %}
 
          <script>
-             const data = document.querySelector('.recipe')
+
+const data = document.querySelector('.recipe')
+const ulData = document.querySelector('.original')
 let dataText = []
 const i = data.innerText.split('\n')
 const btns = document.querySelectorAll('button') 
@@ -178,6 +101,7 @@ btns.forEach((btn) => {
                       // const linkOriginal = document.getElementById('original')
                        li.style.display = 'block'
                        dataText.push(li)
+                       
                        if (tmp === '0') {
                            li.innerHTML = ''
                            
@@ -188,10 +112,14 @@ btns.forEach((btn) => {
                            original.style.display = 'none'
                           // linkOriginal.style.display = 'none'
                            document.getElementById('title').style.display = 'none'
-
+                            
                            li.innerHTML =`${tmp}`
-                           console.log(tmp[0][0])
+                          
+                           
+                           
+                          // console.log(tmp[0][0])
                        }
+                       
                        data.appendChild(li)
                        document.querySelector('.times-x').style.display = 'none'
                        document.getElementById('reload').style.display = 'block'
