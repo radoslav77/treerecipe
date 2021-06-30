@@ -2,6 +2,78 @@
 
 {% block style %}
 <style>
+.multy {
+  display: none;
+}
+
+.btns {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  width: 400px;
+  margin: 10px;
+}
+.btns #reload {
+  margin-left: 3rem;
+  display: none;
+}
+.btns .times-x {
+  width: 80%;
+  margin-left: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+button {
+  width: 50px;
+  height: 30px;
+  background-color: bisque;
+  color: #000;
+  border-radius: 5px;
+  border: 1px solid #fab62d;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+  margin: 5px;
+  font-size: 17px;
+  overflow: none;
+  font-weight: bold;
+}
+.contain {
+  background-color: #fff;
+  margin-top: 2rem;
+  width: auto;
+  height: 100px;
+  display: flex;
+  padding: 10px;
+  border-radius: 5px;
+  border: rgb(247, 97, 97) solid 1px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  overflow: none;
+}
+
+.contain div {
+  margin: 5px;
+  color: red;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 25px;
+}
+.contain h2 {
+  letter-spacing: 1px;
+  margin-top: 20px;
+}
+@media screen and (max-width: 800px) {
+  .contain {
+    width: 60%;
+    margin: 0;
+    overflow: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+    line-height: 6px;
+  }
+}
 
 
 
