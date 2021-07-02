@@ -13,35 +13,24 @@
             <!--<h3>{{d.title}}</h3>-->
              
              <ul>
-                 
                 {% for i in out %}
                
                    <li><a href="{% url 'recipe' i.title %}">{{i}}</a></li>
                 
                 
-                {% endfor %}
-                 {% for j  in out_sub %}
-                   
-                        <li><a href="{% url 'subrecipe' m.0 j.title %}">{{j}}</a></li>
-                    
-                 {% endfor %}
-                
-             </ul>
 
+                 {% for j in out_sub %}
+                 <li><a href="{% url 'subrecipe' i.id j.title %}">{{j}}</a></li>
+                 {% endfor %}
+                 {% endfor %}
+             </ul>
              <br><br>
              <p><a href="{% url 'index' %}">Return Back</a></p>
          </div>
             
         
         {% endif %}
-         <script>
-             /*const result = document.querySelector('.recipe')
-             const Content = result.innerText.split('\n')
-             console.log(Content)
-             Content.forEach((e) => {
-               var num = e.split(/\s+/)
-               console.log(num)})*/
-         </script>
+         
 {% endblock %}
 
         

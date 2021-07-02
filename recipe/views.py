@@ -145,16 +145,7 @@ def recipe(request, title):
 
 def subrecipe(request, title, id):
     data = Sub_recipe.objects.filter(title=title)
-    # subdata=[data]
 
-    '''
-    if len(data) > 1:
-        for d in data:
-          
-            if d not in subdata:
-                subdata.append(d)
-    print(subdata)
-    '''
     ing = []
     ingr = []
     for i in data:
@@ -166,7 +157,7 @@ def subrecipe(request, title, id):
 
     return render(request, 'recipe/subindex.html', {
 
-        'data': data,
+        'data': data[0],
         'ing': ingr,
 
     })
@@ -330,8 +321,9 @@ def search(request):
             result_subrecipe = Sub_recipe.objects.filter(
                 title__icontains=search_term)
 
-            print(result_recipe)
-            print(result_subrecipe)
+            results = []
+            for i in result_recipe:
+                results.append(i.id)
 
             if not result_recipe:
                 msg = 'There is NOT resipies with this key word!'
@@ -349,6 +341,7 @@ def search(request):
             return render(request, 'recipe/search.html', {
                 'out': result_recipe,
                 'out_sub': result_subrecipe,
+                'm': results,
             })
     else:
         msg = 'Please Log in to Gain accses!'

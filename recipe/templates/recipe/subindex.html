@@ -81,9 +81,9 @@ button {
 {% endblock %}
 
 {% block body %}
-        {% for d in data %} 
+        
         <div class="recipe">
-            <h3 id="title">{{d.title}}</h3>
+            <h3 id="title">{{data.title}}</h3>
              
              <ul class="original">
                 {% for i in ing %}
@@ -91,7 +91,7 @@ button {
                 {% endfor %}
              </ul>
              {% if user.is_staff %}
-             <a href="{% url 'delete' d.title %}"  id="original">Delete Recipe</a>
+             <a href="{% url 'delete' data.title %}"  id="original">Delete Recipe</a>
              {% endif %}
          </div>
          <br>
@@ -126,11 +126,11 @@ button {
 
          <div class="method">
              <h3>Method</h3>
-             <p>{{d.method}}</p>
+             <p>{{data.method}}</p>
              <p><a href="{% url 'index' %}">Return Back</a></p>
          </div>
          
-         {% endfor %}
+     
 
          <script>
 
