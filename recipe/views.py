@@ -211,29 +211,35 @@ def inputsub(request):
 
 
 def handover(request):
-    if request.method == 'POST':
-        msg = request.POST['msg']
-        user = request.user
-        if not msg:
-            message = 'You need to type-in Your Message!'
-            return render(request, 'recipe/handover.html', {
-                'message': message,
-            })
-        else:
-            message = Handover(user=user, msg=msg)
-            message.save()
-            return redirect('index')
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            msg = request.POST['msg']
+            user = request.user
+            if not msg:
+                message = 'You need to type-in Your Message!'
+                return render(request, 'recipe/handover.html', {
+                    'message': message,
+                })
+            else:
+                message = Handover(user=user, msg=msg)
+                message.save()
+                return redirect('index')
 
-    msg = Handover.objects.all().order_by('-date')
-    paginator = Paginator(msg, 7)  # Show 7 contacts per page.
+        msg = Handover.objects.all().order_by('-date')
+        paginator = Paginator(msg, 7)  # Show 7 contacts per page.
 
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
 
-    return render(request, 'recipe/handover.html', {
-        # 'msg':msg,
-        'page_obj': page_obj,
-    })
+        return render(request, 'recipe/handover.html', {
+            # 'msg':msg,
+            'page_obj': page_obj,
+        })
+    else:
+        msg = 'Please Log in to Gain accses!'
+        return render(request, 'recipe/base.html', {
+            'msg': msg
+        })
 
 
 def delete_post(request, id):
