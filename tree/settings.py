@@ -159,4 +159,4 @@ DATABASES['default'].update(db_from_env)
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # User session expire
-SESSION_EXPIRE_SECONDS = 43200
+#SESSION_EXPIRE_SECONDS = 43200
