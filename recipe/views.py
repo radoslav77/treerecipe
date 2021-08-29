@@ -23,7 +23,7 @@ def index(request):
 
 def madara(request):
     if request.user.is_authenticated:
-        data = Recipe.objects.all()
+        data = Recipe.objects.all().order_by('title')
         outlets = []
         for outlet in data:
             if outlet.outlet == 'Madara':
@@ -42,7 +42,7 @@ def madara(request):
 
 def pizza(request):
     if request.user.is_authenticated:
-        data = Recipe.objects.all()
+        data = Recipe.objects.all().order_by('title')
         outlets = []
         for outlet in data:
             if outlet.outlet == 'Pizza Mozzo':
@@ -61,7 +61,7 @@ def pizza(request):
 
 def breakfast(request):
     if request.user.is_authenticated:
-        data = Recipe.objects.all()
+        data = Recipe.objects.all().order_by('title')
         outlets = []
         for outlet in data:
             if outlet.outlet == 'breakfast':
@@ -80,7 +80,7 @@ def breakfast(request):
 
 def nest(request):
     if request.user.is_authenticated:
-        data = Recipe.objects.all()
+        data = Recipe.objects.all().order_by('title')
         outlets = []
         for outlet in data:
             if outlet.outlet == 'The Nest':
@@ -99,7 +99,7 @@ def nest(request):
 
 def recipes(request):
     if request.user.is_authenticated:
-        data = Recipe.objects.all()
+        data = Recipe.objects.all().order_by('title')
         outlets = []
         for outlet in data:
             if outlet.outlet == 'Recipes':
@@ -165,7 +165,7 @@ def subrecipe(request, title, id):
 
 def room_service(request):
     if request.user.is_authenticated:
-        data = Recipe.objects.all()
+        data = Recipe.objects.all().order_by('title')
         outlets = []
         for outlet in data:
             if outlet.outlet == 'Room Service':
@@ -323,9 +323,9 @@ def search(request):
         if request.method == 'GET':
             search_term = request.GET['q']
             result_recipe = Recipe.objects.filter(
-                title__icontains=search_term)
+                title__icontains=search_term).order_by('title')
             result_subrecipe = Sub_recipe.objects.filter(
-                title__icontains=search_term)
+                title__icontains=search_term).order_by('title')
 
             results = []
             for i in result_recipe:
