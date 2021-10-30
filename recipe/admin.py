@@ -10,8 +10,7 @@ class UserAdmin(admin.ModelAdmin):
 
 
 class RecipeAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'recipe', 'method',
-                    'outlet', 'image', 'archived')
+    list_display = ('id', 'title', 'recipe', 'method', 'outlet', 'image')
 
 
 admin.site.register(Recipe, RecipeAdmin)
@@ -25,8 +24,7 @@ admin.site.register(Handover, HandoverAdmin)
 
 
 class Sub_recipeAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'sub_title',
-                    'sub_recipe', 'method', 'archived')
+    list_display = ('id', 'title', 'sub_title', 'sub_recipe', 'method')
 
 
 admin.site.register(Sub_recipe, Sub_recipeAdmin)

@@ -17,7 +17,6 @@ class Recipe(models.Model):
     method = models.TextField(max_length=2000)
     image = models.URLField(default=None, null=True)
     outlet = models.CharField(max_length=100, choices=OUTLET)
-    archived = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.title}'
@@ -32,7 +31,6 @@ class Sub_recipe(models.Model):
     title = models.CharField(max_length=300)
     sub_recipe = models.TextField(max_length=2000)
     method = models.TextField(max_length=2000)
-    archived = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.title}: {self.sub_title}'
