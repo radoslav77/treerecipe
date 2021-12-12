@@ -97,6 +97,25 @@ def nest(request):
         })
 
 
+def amenities(request):
+    if request.user.is_authenticated:
+        data = Recipe.objects.all().order_by('title')
+        outlets = []
+        for outlet in data:
+            if outlet.outlet == 'Amenities':
+
+                outlets.append(outlet)
+
+        return render(request, 'recipe/recipe.html', {
+            'out': outlets
+        })
+    else:
+        msg = 'Please Log in to Gain accses!'
+        return render(request, 'recipe/base.html', {
+            'msg': msg
+        })
+
+
 def recipes(request):
     if request.user.is_authenticated:
         data = Recipe.objects.all().order_by('title')

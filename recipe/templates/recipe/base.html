@@ -1,90 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
-   {% load static %}
-   <link rel="stylesheet" href="{% static 'css/style.css' %}">
-   <link rel="stylesheet" href="{% static 'css/handover.css' %}">
-   <link rel="stylesheet" href="{% static 'css/register.css' %}">
-   <link rel="stylesheet" href="{% static 'css/login.css' %}">
-   <link rel="stylesheet" href="{% static 'css/input.css' %}">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" />
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/handover.css' %}">
+  <link rel="stylesheet" href="{% static 'css/register.css' %}">
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+  <link rel="stylesheet" href="{% static 'css/input.css' %}">
 
 
-   
-    <title>Recipe website</title> 
-    <style>
-        .hero h3 {
-            font-size: 40px;
-            margin: -20px 0 20px;
-            color: #999;
-            }
-            
-    </style>
-    {% block style %}
-    {% endblock %}
-</head>
-<body>
-    <nav class="nav">
-        <div class="navcon">
-            <h1 class="logo"><a href="{% url 'index' %}">InterContinental Pastry</a></h1>
-            <ul>
-                <li><a href="{% url 'breakfast' %}">Breakfast</a></li>
-                <li><a href="{% url 'nest' %}">Afternoon tea</a></li>
-                <li><a href="{% url 'room_service' %}">Room Service</a></li>
-                {% if user.is_staff %}
-                <li><a href="{% url 'madara' %}">Madera</a></li>
-                {% endif %}
-                <li><a href="{% url 'pizza' %}">Banqueting </a></li>
-                <li><a href="{% url 'recipes' %}">Recipes</a></li>
-                <li><a href="{% url 'handover' %}">Handover</a></li>
-                {% if not user.is_authenticated %}
-                <li><a href="{% url 'login_user' %}">Login</a></li>
-                {% else  %}
-                <li><a href="{% url 'logout_user' %}">Logout</a></li>
-                {% endif %}
-                <li><a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                    <i class="fa fa-bars"></i>
-                  </a></li>
-            </ul>
-        </div>
-    </nav> 
-    <div class="hero">
-        <div class="container">
-            <h1>Welcom to InterContinental Pastry Team</h1>
-            {% if not user.is_authenticated %}
-            <p>Recipes,Handovers and Lots of FUN</p>
-            {% else %}
-            <h3>Hello {% filter upper %} {{user}} {% endfilter %} </h3>
-            {% endif %}
-        </div>
-    </div>
- 
-     <div class="containerbody">
-      {% if msg %}
-      <div class="method" id="msg">          
-          <h3 style="color: red; text-align: center;">{{msg}}</h3>
-          <br><br>
-          <p><a href="{% url 'index' %}">Return Back</a></p>
-      </div>
-      {% else %}
-        {% block body %}
-        {% endblock %}
-      {% endif %}  
-     </div>
-    
-   <script src="{% static 'js/script.js' %}"></script>
-   <script>
-   function myFunction() {
-    var x = document.querySelector(".nav");
-    if (x.className === "nav") {
-      x.className += " responsive";
-    } else {
-      x.className = "nav";
+
+  <title>Recipe website</title>
+  <style>
+    .hero h3 {
+      font-size: 40px;
+      margin: -20px 0 20px;
+      color: #999;
     }
-  }
+  </style>
+  {% block style %}
+  {% endblock %}
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="navcon">
+      <h1 class="logo"><a href="{% url 'index' %}">InterContinental Pastry</a></h1>
+      <ul>
+        <li><a href="{% url 'breakfast' %}">Breakfast</a></li>
+        <li><a href="{% url 'nest' %}">Afternoon tea</a></li>
+        <li><a href="{% url 'room_service' %}">Room Service</a></li>
+        <li><a href="{% url 'amenities' %}">Amenities</a></li>
+        {% if user.is_staff %}
+        <li><a href="{% url 'madara' %}">Madera</a></li>
+        {% endif %}
+        <li><a href="{% url 'pizza' %}">Banqueting </a></li>
+        <li><a href="{% url 'recipes' %}">Recipes</a></li>
+        <li><a href="{% url 'handover' %}">Handover</a></li>
+        {% if not user.is_authenticated %}
+        <li><a href="{% url 'login_user' %}">Login</a></li>
+        {% else %}
+        <li><a href="{% url 'logout_user' %}">Logout</a></li>
+        {% endif %}
+        <li><a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+          </a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="hero">
+    <div class="container">
+      <h1>Welcom to InterContinental Pastry Team</h1>
+      {% if not user.is_authenticated %}
+      <p>Recipes,Handovers and Lots of FUN</p>
+      {% else %}
+      <h3>Hello {% filter upper %} {{user}} {% endfilter %} </h3>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="containerbody">
+    {% if msg %}
+    <div class="method" id="msg">
+      <h3 style="color: red; text-align: center;">{{msg}}</h3>
+      <br><br>
+      <p><a href="{% url 'index' %}">Return Back</a></p>
+    </div>
+    {% else %}
+    {% block body %}
+    {% endblock %}
+    {% endif %}
+  </div>
+
+  <script src="{% static 'js/script.js' %}"></script>
+  <script>
+    function myFunction() {
+      var x = document.querySelector(".nav");
+      if (x.className === "nav") {
+        x.className += " responsive";
+      } else {
+        x.className = "nav";
+      }
+    }
   </script>
 </body>
+
 </html>

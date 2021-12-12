@@ -7,6 +7,7 @@ urlpatterns = [
     path('input', views.input, name='input'),
     path('madara', views.madara, name='madara'),
     path('pizza', views.pizza, name='pizza'),
+    path('amenities', views.amenities, name='amenities'),
     path('breakfast', views.breakfast, name='breakfast'),
     path('nest', views.nest, name='nest'),
     path('room', views.room_service, name='room_service'),
