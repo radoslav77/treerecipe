@@ -87,11 +87,11 @@ def nest(request):
             if outlet.outlet == 'The Nest':
 
                 outlets.append(outlet)
-        for a in outlets:
-            if a.archived != True:
-                current.append(a)
+        # for a in outlets:
+        #    if a.archived != True:
+        #        current.append(a)
         return render(request, 'recipe/recipe.html', {
-            'out': current
+            'out': outlets
         })
     else:
         msg = 'Please Log in to Gain accses!'
@@ -100,6 +100,7 @@ def nest(request):
         })
 
 
+'''
 def archived(request):
     if request.user.is_authenticated:
         data = Recipe.objects.all()
@@ -111,6 +112,7 @@ def archived(request):
         return render(request, 'recipe/recipe.html', {
             'out': data_recipe
         })
+'''
 
 
 def amenities(request):
