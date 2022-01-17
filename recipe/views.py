@@ -82,18 +82,34 @@ def nest(request):
     if request.user.is_authenticated:
         data = Recipe.objects.all().order_by('title')
         outlets = []
+        current = []
         for outlet in data:
             if outlet.outlet == 'The Nest':
 
                 outlets.append(outlet)
-
+        for a in outlets:
+            if a.archived != True:
+                current.append(a)
         return render(request, 'recipe/recipe.html', {
-            'out': outlets
+            'out': current
         })
     else:
         msg = 'Please Log in to Gain accses!'
         return render(request, 'recipe/base.html', {
             'msg': msg
+        })
+
+
+def archived(request):
+    if request.user.is_authenticated:
+        data = Recipe.objects.all()
+        data_recipe = []
+        for d in data:
+
+            if d.archived == True:
+                data_recipe.append(d)
+        return render(request, 'recipe/recipe.html', {
+            'out': data_recipe
         })
 
 

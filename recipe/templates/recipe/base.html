@@ -44,6 +44,7 @@
         <li><a href="{% url 'pizza' %}">Banqueting </a></li>
         <li><a href="{% url 'recipes' %}">Recipes</a></li>
         <li><a href="{% url 'handover' %}">Handover</a></li>
+        <li><a href="{% url 'archived' %}">Archived</a></li>
         {% if not user.is_authenticated %}
         <li><a href="{% url 'login_user' %}">Login</a></li>
         {% else %}
