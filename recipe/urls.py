@@ -22,5 +22,5 @@ urlpatterns = [
     path('inputsub', views.inputsub, name='inputsub'),
     path('recipes', views.recipes, name='recipes'),
     path('search', views.search, name='search'),
-    #path('archive', views.archived, name='archived')
+    path('archive', views.archived, name='archived')
 ]
