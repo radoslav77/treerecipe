@@ -103,6 +103,25 @@ def nest(request):
         })
 
 
+def vegan(request):
+    if request.user.is_authenticated:
+        data = Recipe.objects.all()
+        outlets = []
+        for outlet in data:
+            if outlet.outlet == 'Vegan & GF':
+
+                outlets.append(outlet)
+
+        return render(request, 'recipe/recipe.html', {
+            'out': outlets
+        })
+    else:
+        msg = 'Please Log in to Gain accses!'
+        return render(request, 'recipe/base.html', {
+            'msg': msg
+        })
+
+
 def archived(request):
     if request.user.is_authenticated:
         data = Recipe.objects.filter(

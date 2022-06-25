@@ -11,7 +11,8 @@ class Recipe(models.Model):
         ('breakfast', 'Breakfast'),
         ('Room Service', 'Room Service'),
         ('Recipes', 'Recipes'),
-        ('Amenities', 'Amenities')
+        ('Amenities', 'Amenities'),
+        ('Vegan & GF', 'Vegan & GF')
     )
     title = models.CharField(max_length=300)
     recipe = models.TextField(max_length=2000)
