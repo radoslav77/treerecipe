@@ -413,3 +413,31 @@ def search(request):
         return render(request, 'recipe/base.html', {
             'msg': msg
         })
+
+def forgoton_password(request):
+    if request.method == 'POST':
+        user = User.objects.get(username=request.POST['username'])
+        if user.email:
+            return redirect('change-password', user.username)
+        elif user.is_staff:
+            return redirect('change-password', user.username)
+        else:
+           return redirect('login_user')
+    return render(request, 'recipe/forgoton.html')
+
+def change_password(request, user):
+    
+    print (user)
+    if request.method == 'POST':
+        u = User.objects.get(username=user)
+        new_password = request.POST['password1']
+        re_password = request.POST['password2']
+        if new_password != re_password:
+            return render(request, 'recipe/change-password.html', {
+                'msg': 'Your password DO NOT mutch! Please try again! '
+            })
+        else:
+            u.set_password(new_password)
+            u.save()
+            return redirect('login_user')
+    return render(request, 'recipe/change-password.html')

@@ -1,0 +1,43 @@
+{% extends 'recipe/base.html' %}
+
+{% block body %}
+
+	<div class="card">
+		<div class="card-body">
+		<h3 class=" text-center">Login to Your Account!</h3>
+		<form action="" method="POST">
+			{% csrf_token %}
+			<label>Username</label>
+			<input type="text" placeholder="Enter Your Username" name="username" id="user">
+			
+			<input  type="submit" value="Submit requets" class="btn">
+			{% if error %}
+			<i style="color:red;">{{ error }}</i>
+			{% endif %}
+			
+		</form>
+		
+		</div>
+	</div >
+<script>
+	
+	const userName = document.getElementById('user')
+	// get keystrok 
+	document.onkeypress = function(evt) {
+    evt = evt || window.event;
+    let charCode = evt.keyCode || evt.which;
+    let charStr = String.fromCharCode(charCode);
+    let userNameEntry = []
+		
+	let c = userNameEntry + charStr
+	userNameEntry.push(c)
+	
+
+
+	//console.log(userNameEntry)
+	
+}
+	
+</script>
+
+{% endblock %}   

@@ -23,5 +23,7 @@ urlpatterns = [
     path('recipes', views.recipes, name='recipes'),
     path('search', views.search, name='search'),
     path('archive', views.archived, name='archived'),
-    path('vegan', views.vegan, name='vegan')
+    path('vegan', views.vegan, name='vegan'),
+     path('change-password/<str:user>', views.change_password, name='change-password'),
+    path('forgoten', views.forgoton_password, name='forgoton'),
 ]
