@@ -418,16 +418,20 @@ def forgoton_password(request):
     if request.method == 'POST':
         user = User.objects.get(username=request.POST['username'])
         if user.email:
-            return redirect('change-password', user.username)
+            return render(request, 'recipe/change-password.html',{
+                'user': user
+            })
         elif user.is_staff:
-            return redirect('change-password', user.username)
+            return render(request, 'recipe/change-password.html',{
+                'user': user
+            })
         else:
            return redirect('login_user')
     return render(request, 'recipe/forgoton.html')
 
 def change_password(request, user):
     
-    print (user)
+    #print (user)
     if request.method == 'POST':
         u = User.objects.get(username=user)
         new_password = request.POST['password1']
